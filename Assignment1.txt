@@ -1,0 +1,299 @@
+package arrayQueue;
+
+import java.util.Scanner;
+
+public class QueueArray {
+	private int front;
+	private int rear;
+	private int que[];
+	private int size;
+	
+	Scanner sc = new Scanner(System.in);
+	
+	public QueueArray() {
+		size = 0;
+		que = new int[size];
+		front = rear = -1;
+	}
+	
+	public void initQueue() {
+		System.out.println("Enter the size of Queue: ");
+		size = sc.nextInt();
+		que = new int[this.size];
+		front = rear = -1;
+	}
+	
+	public boolean isFull() {
+		if(rear == size-1) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public boolean isEmpty() {
+		if(front == rear) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	
+	public int Enqueue(int value) {
+		if(!isFull()) {
+			rear++;
+			que[rear] = value;
+		} else {
+			System.out.println("Queue is overflow");
+		}
+		return value;
+	}
+	
+	public int Dequeue() {
+		int value=0;
+		if(!isEmpty()) {
+			front++;
+			value = que[front];
+		} else {
+			System.out.println("Queue is underflow");
+		}
+		return value;
+	}
+	
+	public void display() {
+		for(int i=front+1;i<=rear;i++) {
+			System.out.print(que[i]+" ");
+		}
+		System.out.println();
+	}
+}
+-------------------------------------------------------------------------------------------------------------------
+package arrayQueue;
+
+import java.util.Scanner;
+
+public class ClientQueueArray {
+
+	public static void main(String[] args) {
+		QueueArray q = new QueueArray();
+		
+		Scanner sc = new Scanner(System.in);
+		
+		int value = 0,option = 0;
+		
+		do {
+			System.out.println("********MENU*****************");
+			System.out.println("\n 1.initilize Queue"+
+								"\n 2.ENQUEUE"+
+								"\n 3.DEQUEUE"+
+								"\n 4.display"+
+								"\n 0.exit");
+			System.out.println("Enter your Choice: ");
+			option = sc.nextInt();
+			
+			switch (option) {
+			case 1: {
+				q.initQueue();
+				System.out.println("New Queue Added...");
+				break;
+			}
+			case 2 :{
+				System.out.println("Enter values: ");
+				value = sc.nextInt();
+				
+				q.Enqueue(value);
+				break;
+			}
+			case 3:{
+				value = q.Dequeue();
+				if(value != -1) {
+					System.out.println("Dequeu::"+value);
+				}
+				break;
+			}
+			case 4:{
+				q.display();
+				break;
+			}
+
+			case 0:{
+				System.out.println("End........");
+				System.exit(0);
+			}
+		}
+		} while(option != 0);
+	}
+
+}
+------------------------------------------------------------------------------------------------------------
+********MENU*****************
+
+ 1.initilize Queue
+ 2.ENQUEUE
+ 3.DEQUEUE
+ 4.display
+ 0.exit
+Enter your Choice: 
+1
+Enter the size of Queue: 
+5
+New Queue Added...
+********MENU*****************
+
+ 1.initilize Queue
+ 2.ENQUEUE
+ 3.DEQUEUE
+ 4.display
+ 0.exit
+Enter your Choice: 
+2
+Enter values: 
+10
+********MENU*****************
+
+ 1.initilize Queue
+ 2.ENQUEUE
+ 3.DEQUEUE
+ 4.display
+ 0.exit
+Enter your Choice: 
+2
+Enter values: 
+20
+********MENU*****************
+
+ 1.initilize Queue
+ 2.ENQUEUE
+ 3.DEQUEUE
+ 4.display
+ 0.exit
+Enter your Choice: 
+2
+Enter values: 
+30
+********MENU*****************
+
+ 1.initilize Queue
+ 2.ENQUEUE
+ 3.DEQUEUE
+ 4.display
+ 0.exit
+Enter your Choice: 
+2
+Enter values: 
+40
+********MENU*****************
+
+ 1.initilize Queue
+ 2.ENQUEUE
+ 3.DEQUEUE
+ 4.display
+ 0.exit
+Enter your Choice: 
+2
+Enter values: 
+50
+********MENU*****************
+
+ 1.initilize Queue
+ 2.ENQUEUE
+ 3.DEQUEUE
+ 4.display
+ 0.exit
+Enter your Choice: 
+2
+Enter values: 
+60
+Queue is overflow
+********MENU*****************
+
+ 1.initilize Queue
+ 2.ENQUEUE
+ 3.DEQUEUE
+ 4.display
+ 0.exit
+Enter your Choice: 
+4
+10 20 30 40 50 
+********MENU*****************
+
+ 1.initilize Queue
+ 2.ENQUEUE
+ 3.DEQUEUE
+ 4.display
+ 0.exit
+Enter your Choice: 
+3
+Dequeu::10
+********MENU*****************
+
+ 1.initilize Queue
+ 2.ENQUEUE
+ 3.DEQUEUE
+ 4.display
+ 0.exit
+Enter your Choice: 
+3
+Dequeu::20
+********MENU*****************
+
+ 1.initilize Queue
+ 2.ENQUEUE
+ 3.DEQUEUE
+ 4.display
+ 0.exit
+Enter your Choice: 
+3
+Dequeu::30
+********MENU*****************
+
+ 1.initilize Queue
+ 2.ENQUEUE
+ 3.DEQUEUE
+ 4.display
+ 0.exit
+Enter your Choice: 
+3
+Dequeu::40
+********MENU*****************
+
+ 1.initilize Queue
+ 2.ENQUEUE
+ 3.DEQUEUE
+ 4.display
+ 0.exit
+Enter your Choice: 
+4
+50 
+********MENU*****************
+
+ 1.initilize Queue
+ 2.ENQUEUE
+ 3.DEQUEUE
+ 4.display
+ 0.exit
+Enter your Choice: 
+3
+Dequeu::50
+********MENU*****************
+
+ 1.initilize Queue
+ 2.ENQUEUE
+ 3.DEQUEUE
+ 4.display
+ 0.exit
+Enter your Choice: 
+3
+Queue is underflow
+Dequeu::0
+********MENU*****************
+
+ 1.initilize Queue
+ 2.ENQUEUE
+ 3.DEQUEUE
+ 4.display
+ 0.exit
+Enter your Choice: 
+0
+End........
